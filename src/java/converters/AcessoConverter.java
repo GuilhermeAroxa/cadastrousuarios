@@ -5,27 +5,27 @@
  */
 package converters;
 
-import dao.IdentificacaoDAO;
+import dao.CadastroDeAcessoDAO;
 import java.lang.annotation.Annotation;
 import javax.faces.component.UIComponent;
 import javax.faces.context.FacesContext;
 import javax.faces.convert.FacesConverter;
 import javax.faces.convert.Converter;
-import model.Identificacao;
+import model.CadastroDeAcesso;
 
 /**
  *
  * @author kenji
  */
-@FacesConverter(value = "identificacaoConverter", forClass = Identificacao.class)
-public class IdentificacaoConverter implements Converter {
+@FacesConverter(value = "acessoConverter", forClass = CadastroDeAcesso.class)
+public class AcessoConverter implements Converter {
     
     @Override
     public Object getAsObject(FacesContext facesContext, UIComponent uiComponent, String value) {
         if (value != null && !value.isEmpty()) {
-            IdentificacaoDAO identificacaoDAO = new IdentificacaoDAO(javax.persistence.Persistence.createEntityManagerFactory("ControleEntradaSaidaPU"));
+            CadastroDeAcessoDAO acessoDAO = new CadastroDeAcessoDAO(javax.persistence.Persistence.createEntityManagerFactory("ControleEntradaSaidaPU"));
             
-            return identificacaoDAO.findIdentificacao(Integer.valueOf(value));
+            return acessoDAO.findCadastroDeAcesso(Integer.valueOf(value));
         }
         
         return null;
@@ -33,8 +33,8 @@ public class IdentificacaoConverter implements Converter {
     
     @Override
     public String getAsString(FacesContext facesContext, UIComponent uiComponent, Object value) {
-        if (value != null && (value instanceof Identificacao)) {
-            return String.valueOf(((Identificacao) value).getId());
+        if (value != null && (value instanceof CadastroDeAcesso)) {
+            return String.valueOf(((CadastroDeAcesso) value).getId());
         }
         
         return null;
