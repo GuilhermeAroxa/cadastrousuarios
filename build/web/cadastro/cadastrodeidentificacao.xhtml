@@ -23,17 +23,19 @@
                                 <f:selectItems value="#{userBean.listar()}"
                                                var="c"
                                                itemValue="#{c}"
-                                               itemLabel="#{c.nome}" />
+                                               itemLabel="#{c.id}" />
                     </h:selectOneMenu>
                 </div>
                 
                 <div class="form-group">
                     <label>Data de Validade</label>
-                    <input type="text"
-                                   class="form-control"
-                                   id="nome"
-                                   jsf:value="#{identificacaoBean.identificacao.dataValidade}" />
+                    <br/>
+                    <h:inputText id = "dataValidade" value = "#{identificacaoBean.identificacao.dataValidade}"
+                    label = "Date" >
+                        <f:convertDateTime pattern = "dd/mm/yyyy" />
+                    </h:inputText>
                 </div>
+         
 
                 <a href="#" class="btn btn-primary" jsf:action="#{identificacaoBean.inserir()}">Salvar</a>
             </div>
