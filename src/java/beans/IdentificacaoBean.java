@@ -21,7 +21,7 @@ import model.Identificacao;
  */
 @ManagedBean
 @RequestScoped
-public class ControleDeIdentificacaoBean {
+public class IdentificacaoBean {
 
     /**
      * Creates a new instance of UserBean
@@ -29,7 +29,7 @@ public class ControleDeIdentificacaoBean {
     private Identificacao identificacao;
     private IdentificacaoDAO dao;
     private List<Identificacao> identificacoes;
-    public ControleDeIdentificacaoBean() {
+    public IdentificacaoBean() {
         identificacao = new Identificacao();
         identificacoes = new ArrayList<>();
         dao = new IdentificacaoDAO(javax.persistence.Persistence.createEntityManagerFactory("ControleEntradaSaidaPU"));
@@ -61,7 +61,7 @@ public class ControleDeIdentificacaoBean {
 
  
     
-        public void inserir() {
+    public void inserir() {
         dao.create(identificacao);
     }
     
@@ -74,7 +74,7 @@ public class ControleDeIdentificacaoBean {
         try {
             dao.destroy(c.getId());
         } catch (NonexistentEntityException ex) {
-            Logger.getLogger(ControleDeIdentificacaoBean.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(IdentificacaoBean.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
     
